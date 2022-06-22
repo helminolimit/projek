@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta  content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/NiceAdmin/assets/css/styles.css">
+    <title>Log Masuk!</title>
+    
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+        <h3>Log Masuk</h3>
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" class="form-control" name="email" id="inputEmail" placeholder="Masukkan email"  required autofocus>
+        <label for="inputPassword">Kata Laluan</label>
+        <input type="password" class="form-control" placeholder="Masukkan kata laluan" name="password" id="inputPassword"  required>
+        <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+        >
+        <button type="submit">Log Masuk</button>
+    
+        
+        <p>Belum berdaftar?<a href="{{ path('app_register')}}">Daftar disini!!!</a></p>
+    </form>
+</body>
+</html>

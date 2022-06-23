@@ -1,36 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Profail saya{% endblock %}
 
-{% block body %}
-    <h1>User</h1>
+{% block content %}
+    <h1>Profail saya</h1>
 
     <table class="table">
         <tbody>
-            <tr>
+            {# <tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
-            </tr>
+            </tr> #}
+            <tr>
+            <th>Fullname</th>
+            <td>{{ user.fullname }}</td>
+        </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
-            <tr>
+            {# <tr>
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
+            </tr> #}
+            {# <tr>
                 <th>Password</th>
                 <td>{{ user.password }}</td>
-            </tr>
-            <tr>
+            </tr> #}
+            {# <tr>
                 <th>IsVerified</th>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Fullname</th>
-                <td>{{ user.fullname }}</td>
-            </tr>
+            </tr> #}
+            
         </tbody>
     </table>
 

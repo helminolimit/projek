@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta  content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/NiceAdmin/assets/css/styles2.css">
+    <link href="/NiceAdmin/assets/img/favicon.png" rel="icon">
+    <title>Daftar!</title>
+</head>
+<body>
+    <div class="row justify-content-center">
+    </div>
+    </div>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+     </div>
+    
+        {{ form_start(form) }}   
+        <h3>Pendaftaran</h3>
+        <label for="yourName" class="form-label">Nama Penuh</label>
+        {{ form_widget(form.fullname) }}
+        <label for="yourEmail" class="form-label">Alamat Emel</label>
+        {{ form_widget(form.email) }}
+        {{ form_widget(form.password) }}
+        {{ form_widget(form) }}
+        <button class="but1"  type="submit">{{ button_label|default('Daftar') }}</button>
+        <p>Telah berdaftar?<a href="{{ path('app_login')}}">Log Masuk</a></p>
+        {{ form_end(form) }}
+
+</body>
+</html>

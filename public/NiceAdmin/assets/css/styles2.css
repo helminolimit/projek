@@ -24,7 +24,7 @@ body{
     border-radius: 50%;
 }
 
-.shape:first-child{
+/* .shape:first-child{
     background: linear-gradient(
         #1845ad,
         #23a2f6
@@ -40,7 +40,7 @@ body{
     );
     right: -30px;
     bottom: -80px;
-}
+} */
 
 form{
     height: 530px;

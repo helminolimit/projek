@@ -1,43 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Senarai Pengguna{% endblock %}
 
-{% block body %}
-    <h1>User index</h1>
+{% block content %}
+    <h1>Senarai Pengguna</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>IsVerified</th>
-                <th>Fullname</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-                <td>{{ user.fullname }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <div class="table-responsive">
+                            <table class="datatable table-relative">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Email</th>
+                                        <th>Roles</th>
+                                        <th>Password</th>
+                                        <th>IsVerified</th>
+                                        <th>Fullname</th>
+                                        <th>actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                        <td>{{ user.password }}</td>
+                                        <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                                        <td>{{ user.fullname }}</td>
+                                        <td>
+                                            <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                                            <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ path('app_user_new') }}" class"btn btn-primary">Tambah pengguna</a>
+                    </div>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    
 {% endblock %}

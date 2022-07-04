@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GAUGE METER{% endblock %}
+
+{% block content %}
+<div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Gauge Chart</h5>
+
+              <!-- Doughnut Chart -->
+            <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+            <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+        
+              <canvas id="canvas" style="max-height: 400px;"></canvas>
+            
+              <script>
+                var data = 0;
+                var ctx = document.getElementById("canvas").getContext("2d");
+
+                var chart =  new Chart(ctx, {
+                type: 'gauge',
+                data: {
+                    datasets: [{
+                    value: data ,
+                    minValue: 0,
+                    data: [1, 2, 3, 4],
+                    backgroundColor: ['green', 'yellow', 'orange', 'red'],
+                    }],
+                },
+                options: {
+                    responsive:true;
+                    needle: {
+                    radiusPercentage: 2,
+                    widthPercentage: 3.2,
+                    lengthPercentage: 80,
+                    color: 'rgba(0, 0, 0, 1)'
+                    },
+                    valueLabel: {
+                    display: true,
+                    formatter: (value) => {
+                        return '$' + Math.round(value);
+                    },
+                    color: 'rgba(255, 255, 255, 1)',
+                    backgroundColor: 'rgba(0, 0, 0, 1)',
+                    borderRadius: 5,
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                    }
+                },
+                });
+                chart.update();
+
+                
+              </script>
+            
+            </div>
+          </div>
+        </div>
+{% endblock %}
+

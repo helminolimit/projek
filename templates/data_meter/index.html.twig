@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DataMeter index{% endblock %}
+
+{% block content %}
+    <h1>DataMeter index</h1>
+       {# {{ include('data_meter/_gauge.html.twig') }} #}
+    <div  class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gauge Chart</h5>
+                    <!-- gauge Chart -->
+                    <canvas id="canvas2" style="max-height: 400px;"></canvas>
+                </div>              
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gauge Chart</h5>
+                    <!-- gauge Chart -->
+                    <canvas id="canvas2" style="max-height: 400px;"></canvas>
+                </div>              
+        </div>
+    </div>
+      
+
+    <div class="table-responsive">
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Projek</th>
+                <th>Progress</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data_meter in data_meters %}
+            <tr>
+                <td>{{ data_meter.id }}</td>
+                <td>{{ data_meter.projek }}</td>
+                <td >{{ data_meter.progress }}</td>
+                <td> </td>
+                <td>
+                    <a href="{{ path('app_data_meter_show', {'id': data_meter.id}) }}">show</a>
+                    <a href="{{ path('app_data_meter_edit', {'id': data_meter.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_data_meter_new') }}">Create new</a>
+    </div>
+<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+<script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+
+    <script>
+        
+        var data = 0;
+        
+        {# if(data!=0){
+            data = document.getElementById('thisdata').value;
+        }else{
+            data = 0;
+        } #}
+
+        var ctx = document.getElementById("canvas2").getContext("2d");
+        var chart =  new Chart(ctx, {
+        type: 'gauge',
+        data: {
+            datasets: [{
+            value: 10,
+            minValue: 0,
+            data: [0,10, 25, 50,75, 100],
+            backgroundColor: ['red','red', 'yellow', 'orange', 'blue','green'],
+            }],
+        },
+        options: {
+            responsive: true,
+            needle: {
+            radiusPercentage: 2,
+            widthPercentage: 3.2,
+            lengthPercentage: 80,
+            color: 'rgba(0, 0, 0, 1)'
+            },
+            valueLabel: {
+            display: true,
+            formatter: (value) => {
+                return '$' + Math.round(value);
+            },
+            color: 'rgba(255, 255, 255, 1)',
+            backgroundColor: 'rgba(0, 0, 0, 1)',
+            borderRadius: 5,
+            padding: {
+                top: 10,
+                bottom: 10
+            }
+            }
+        },
+        });
+       
+        
+        
+        {# chart.update();
+        
+        document.getElementById('thisdata').addEventListener('click', function() {
+  config.data.datasets.forEach(function(dataset) {
+    dataset.data = randomData();
+    dataset.value = randomValue(dataset.data);
+  });
+
+  window.myGauge.update();
+}); #}
+       
+       </script>
+   
+
+   
+
+    
+{% endblock %}

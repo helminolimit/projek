@@ -5,6 +5,7 @@
     <meta  content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/NiceAdmin/assets/css/styles.css">
+    <script src="https://kit.fontawesome.com/32c580c9e4.js" crossorigin="anonymous"></script>
     <title>Log Masuk!</title>
     
 </head>
@@ -20,7 +21,8 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                You are logged in as {{ app.user.userIdentifier }},<br><i class="fa-solid fa-right-from-bracket">&nbsp;</i><a href="{{ path('app_logout') }}">Logout</a><br>
+                <i class="fa-solid fa-user"></i>&nbsp;<a href="{{ path('app_dashboard_index') }}">continue with this account</a>
             </div>
         {% endif %}
         <h3>Log Masuk</h3>

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DataMeter{% endblock %}
+
+{% block body %}
+    <h1>Create new DataMeter</h1>
+
+    {{ include('data_meter/_form.html.twig') }}
+
+    <a href="{{ path('app_data_meter_index') }}">back to list</a>
+{% endblock %}

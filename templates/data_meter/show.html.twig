@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DataMeter{% endblock %}
+
+{% block body %}
+    <h1>DataMeter</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ data_meter.id }}</td>
+            </tr>
+            <tr>
+                <th>Projek</th>
+                <td>{{ data_meter.projek }}</td>
+            </tr>
+            <tr>
+                <th>Progress</th>
+                <td>{{ data_meter.progress }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_data_meter_index') }}">back to list</a>
+
+    <a href="{{ path('app_data_meter_edit', {'id': data_meter.id}) }}">edit</a>
+
+    {{ include('data_meter/_delete_form.html.twig') }}
+{% endblock %}

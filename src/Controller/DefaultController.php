@@ -35,4 +35,12 @@ class DefaultController extends AbstractController
             'controller_name' => 'DefaultController',
         ]);
     }
+
+    #[Route('/carta', name: 'carta')]
+    public function carta(): Response
+    {
+        return $this->render('/carta/index.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
 }

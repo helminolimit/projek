@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cuti{% endblock %}
+
+{% block content %}
+    <h1>Edit Cuti</h1>
+
+    {{ include('cuti/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_cuti_index') }}">back to list</a>
+
+    {{ include('cuti/_delete_form.html.twig') }}
+{% endblock %}

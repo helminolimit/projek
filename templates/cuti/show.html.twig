@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cuti{% endblock %}
+
+{% block content %}
+    <h1>Cuti</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cuti.id }}</td>
+            </tr>
+            <tr>
+                <th>Nama</th>
+                <td>{{ cuti.Nama }}</td>
+            </tr>
+            <tr>
+                <th>NomborStaff</th>
+                <td>{{ cuti.NomborStaff }}</td>
+            </tr>
+            <tr>
+                <th>TarikhMulaCuti</th>
+                <td>{{ cuti.tarikhMulaCuti }}</td>
+            </tr>
+            <tr>
+                <th>TarikhAkhirCuti</th>
+                <td>{{ cuti.tarikhAkhirCuti }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cuti_index') }}">back to list</a>
+
+    <a href="{{ path('app_cuti_edit', {'id': cuti.id}) }}">edit</a>
+
+    {{ include('cuti/_delete_form.html.twig') }}
+{% endblock %}

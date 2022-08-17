@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cuti index{% endblock %}
+
+{% block content %}
+    <h1>Permohonan Cuti</h1>
+    <div class="card">
+    <table class="table datatable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nama</th>
+            <th>NomborStaff</th>
+            <th>TarikhMulaCuti</th>
+            <th>TarikhAkhirCuti</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for cuti in cutis %}
+        <tr>
+            <td>{{ cuti.id }}</td>
+            <td>{{ cuti.Nama }}</td>
+            <td>{{ cuti.NomborStaff }}</td>
+            <td>{{ cuti.tarikhMulaCuti|date('d-m-Y') }}</td>
+            <td>{{ cuti.tarikhAkhirCuti|date('d-m-Y') }}</td>
+            {# <td>{{ cuti.newdate }}</td> #}
+            <td>
+                <a href="{{ path('app_cuti_show', {'id': cuti.id}) }}">show</a>
+                <a href="{{ path('app_cuti_edit', {'id': cuti.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <div class="row mb-3">        
+    <div class="col-sm-10">
+<a href="{{ path('app_cuti_new') }}" class="btn btn-primary btn-lg active" role="button">Create new</a>
+    </div>              
+    </div>
+
+</div>
+   
+{% endblock %}

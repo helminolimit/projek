@@ -3,14 +3,55 @@
 {% block title %}Profail saya{% endblock %}
 
 {% block content %}
-    <h1>Profail saya</h1>
+
+<div>
+    <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                    
+                        <h5 class="card-title">Profail Saya</h5>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                            <div class="col-lg-9 col-md-8">{{ user.fullname }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Email</div>
+                            <div class="col-lg-9 col-md-8">{{ user.email }}</div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+               {{ include('user/_edittab.html.twig') }}
+                </div>
+            </div>
+    </div>
+</div>
+
+
+    {# <h1>Profail saya</h1>
 
     <table class="table">
         <tbody>
             {# <tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
-            </tr> #}
+            </tr> 
             <tr>
             <th>Fullname</th>
             <td>{{ user.fullname }}</td>
@@ -30,14 +71,13 @@
             {# <tr>
                 <th>IsVerified</th>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr> #}
+            </tr>
             
         </tbody>
-    </table>
+    </table> #}
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+    {# {# <a href="{{ path('app_user_index') }}">back to list</a> #}
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+    {#{{ include('user/_delete_form.html.twig') }} #}
 {% endblock %}
